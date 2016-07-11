@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <script type="text/javascript" src="lib/PIE_IE678.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <![endif]-->
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/css/style.css" />
+<!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+</head>
+<body>
+	<!--秒杀后台的新增产品-->
+	<div class="htmsnewadd" id="htmsnewadd" style="left: 47%;">
+		<div class="page-container">
+			<!--  <form action="mhmsht" enctype="multipart/form-data" method="post"> -->
+			<div class="text-c">
+
+				<div class="formControls col-xs-8 col-sm-9"
+					style="margin-left: 123px;">
+					<!-- 时间： <input type="text"
+						onfocus="WdatePicker({minDate:'#F{$dp.$D(\'logmin\')||\'%y-%M-%d\'}'})"
+						id="logmin" class="input-text Wdate" style="width: 120px;"> -->
+				</div>
+
+				<br />
+
+				<div class="wxc-search">
+					<div class="row wxc-type">
+						<label class="form-label fl">类别：</label>
+
+						<div class="formControls fl">
+
+							<span class="select-box" style="width: 150px;"> 
+							<select name="shopId" class="selectd" id="floorIdSelect">
+           						<option value="-1">---请选择---</option>
+       						</select>
+
+							</span>
+						</div>
+					</div>
+					<input type="text" class="input-text spsearch"
+						style="width: 200px;" placeholder="输入查询商品信息" id="spxxAdd" name="">
+					<input type="button" class="btn btn-success btn-search"
+						style="margin-left: 5px;" name="mshtssp" value="搜商品" id="mshtssp" />
+				</div>
+			</div>
+			<!--   </form> -->
+			<br />
+
+			<div class="cl pd-5 bg-1 bk-gray mt-20">
+				<div class="mt-20">
+					<table
+						class="table table-border table-bordered table-bg table-hover table-sort">
+						<thead>
+							<tr class="text-c">
+								<th width="80">商品</th>
+								<th>商品名称</th>
+								<th width="80">最低售价</th>
+								<th width="80">市场价</th>
+								<th width="120">选择</th>
+							</tr>
+						</thead>
+
+						<tbody id="table-container">
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--失败弹出框  mshtsbk    btnsbt -->
+	<div class="jd_win mshsbk" id="mshsbk">
+		<div class="jd_win_box">
+			<p class="title">对不起，失败了。</p>
+
+			<div class="button clearfix">
+				<a href="javascript:;" class="submit" id="btnsbt">确定</a>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>
+	<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+	<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+	<script src="js/msht.js"></script>
+	<!-- <script src="js/template-native.js"></script> -->
+	<script type="text/javascript" charset="UTF-8">
+
+ 	 function ms_add(pid) {
+		article_add2("","msadd",pid);
+		//index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+		//parent.layer.close(index); //再执行关闭
+	}  
+		$(function() {
+			//搜商品
+			$('#mshtssp').on(
+					'click',
+					function() {
+						$("#table-container").html("");
+						$("#table-container")
+					.load("mhmsht?CategoryId="+ $("#floorIdSelect").val()+ "&ProductName="+ $("#spxxAdd").val());
+					
+					});
+
+		})
+
+	</script>
+</body>
+</html>

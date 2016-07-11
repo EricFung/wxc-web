@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<title></title>
+<!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <script type="text/javascript" src="lib/PIE_IE678.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <![endif]-->
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/css/style.css" />
+</head>
+<body>
+	<!--首页轮播新增轮播商品-->
+	<div class="sylbNewadd" id="sylbNewadd">
+
+		<nav class="breadcrumb" style="padding: 0 20px; margin: 0; font-size: 14px;">
+			首页轮播 <span class="c-gray en">&gt;</span> 新增轮播图片
+		</nav>
+		<form action="sylbadnew.html" id="myednform" enctype="multipart/form-data" method="post"  >
+			<div class="page-container">
+				<!-- hidden value field -->
+				<input type="hidden" name="id" value="${obj.id!}"> 
+				<input type="hidden" name="imgUrl" value="${obj.imgUrl!}">
+				<!--类别 行-->
+				<label class="form-label fl" style="">类别：</label>
+				<div class="formControls fl">
+					<span class="select-box" style="width: 200px;"> 
+						<select class="select" id="select" name="adp" size="1">
+							<option value="0" ${obj.groupId!=0?"selected='selected'"}>分类</option>
+							<option value="1" ${obj.goodsId!=0?"selected='selected'"}>单品</option>
+							<option value="2" ${!isEmpty(obj.linkUrl)?"selected='selected'"}>活动</option>
+						</select>
+					</span> 
+					<input name="adpv" id="adpv" type="text"
+				<% var a=obj.goodsId; var b=obj.groupId; var c=obj.linkUrl;%>
+				<%if(a==0&&b==0){%>
+					value="${obj.linkUrl!}"
+				<%}else if(a==0 && c==""){%>
+					value="${obj.groupId!}"
+				<%}else{%>
+					value="${obj.goodsId!}"
+				<%}%>  />
+				</div>
+				<div style="margin-top: 40px"></div>
+				
+				<!--第二行-->
+				<div class="two-line" id="twoLine"
+					style="height: 30px; line-height: 30px;">
+					<!-- ###########################分类 -->
+					<div class="fenlei" id="fenlei" style="display: block;">
+						<!--参数-->
+						<label class="form-label fl" style="">分类：</label>
+						<div class="formControls fl">
+							<span class="select-box"
+								style="width: 200px; padding: 0; border: none"> <select
+								name="shopId" class="selectd" id="floorIdSelect">
+									<option value="-1">---请选择---</option>
+							</select>
+							</span>
+						</div>
+					</div>
+					<!-- ###########################商品 -->
+					<div class="danpin" id="danpin" style="display: none">
+
+						商品ID: <input type="text" class="input-text" readonly="readonly"
+							id="dpv" name="dpv"
+							style="width: 50px; margin-left: 6px; color: red; font-style: italic" />
+
+						<input type="button" class="btn btn-success btn-search"
+							value="搜商品" style="height: 31px; margin-left: 63px;"
+							onClick="newaddsp()" />
+					</div>
+					<!-- ###########################活动链接 -->
+					<div class="huodong" id="huodong" style="display: none">
+						链接：<input type="text" class="input-text " style="width: 200px"
+							id="linkUrl" name="linkUrl" value="${obj.linkUrl!}">
+					</div>
+				</div>
+				<div style="margin-top: 10px"></div>
+				<!--排序-->
+				排序：<input type="text" class="input-text " style="width: 200px"
+					id="sylbPaixu" name="sequence" value="${obj.sequence!}">
+
+				<div style="margin-top: 10px"></div>
+				描述：<input type="text" class="input-text " style="width: 200px"
+					id="sylbMiaoshu" name="describe" value="${obj.describe!}">
+
+				<div style="margin-top: 10px"></div>
+
+				<div>
+					<input type="file" name="imgFile" />
+				</div>
+				<button class="btn btn-primary radius" id="newadd">确认</button>
+			</div>
+		</form>
+	</div>
+	<div class="jd_win sylbsb" id="mshsbk">
+		<div class="jd_win_box">
+			<p class="title">对不起，失败了。</p>
+
+			<div class="button clearfix">
+				<a href="javascript:;" class="submit" id="btnsbt">确定</a>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--秒杀后台的新增商品-->
+	<div class="htmsnewadd" id="htmsnewadd">
+		<nav class="breadcrumb"
+			style="padding: 0 20px; margin: 0; font-size: 14px;">
+			首页轮播 <span class="c-gray en">&gt;</span> 新增轮播图片<span
+				class="c-gray en">&gt;</span>搜索商品<i class="sylbeditdel"
+				id="sylbedit2">×</i>
+		</nav>
+		<div class="page-container">
+			<!--<form action="" method="post">-->
+			<div class="text-c">
+
+				<div class="wxc-search">
+					<div class="row wxc-type">
+						<label class="form-label fl">类别：</label>
+
+						<div class="formControls fl">
+							<span class="select-box" style="width: 150px;"> <select
+								class="select" name="adminRole" size="1" id="selectAdd">
+									<option value="-1">---请选择---</option>
+							</select>
+							</span>
+						</div>
+					</div>
+					<input type="text" class="input-text spsearch" style="width: 200px;" 
+							placeholder="输入查询商品信息" id="spname" name="spname" /> 
+					<input type="button" class="btn btn-success btn-search" 
+							style="margin-left: 5px;" name="" value="搜商品" id="sylbaddsp" />
+				</div>
+			</div>
+			<!--</form>-->
+			<br />
+
+			<div class="cl pd-5 bg-1 bk-gray mt-20">
+				<div class="mt-20">
+					<table
+						class="table table-border table-bordered table-bg table-hover table-sort">
+						<thead>
+							<tr class="text-c">
+								<th width="80">商品名称</th>
+								<th width="80">商品编码</th>
+								<th width="80">描述</th>
+								<th width="80">添加日期</th>
+								<th width="120">市场价</th>
+								<th width="75">最低价</th>
+								<th width="120">操作</th>
+							</tr>
+						</thead>
+						<tbody id="splist-container">
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--修改-->
+
+
+
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>
+	<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+	<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+
+	<script src="js/sylb.js"></script>
+	<script type="text/javascript" charset="UTF-8">
+		function sy_add(id) {
+			$('#htmsnewadd')[0].style.display = "none";
+			$('#dpv').val(id);
+			$('#adpv').val(id);
+		}
+		  
+		$(function() {
+			if($("#myednform")[0].adp.value==0){
+			        $("#fenlei")[0].style.display="block";
+			        $("#danpin")[0].style.display="none";
+			        $("#huodong")[0].style.display="none";
+			        //得到分类下拉值
+			        
+			        //$("#floorIdSelect option[value='${obj.groupId}']").attr("selected", true);
+			    }else if($("#myednform")[0].adp.value==1){
+			        $("#danpin")[0].style.display="block";
+			        $("#fenlei")[0].style.display="none";
+			        $("#huodong")[0].style.display="none";
+			    }else{
+			        $("#huodong")[0].style.display="block";
+			        $("#fenlei")[0].style.display="none";
+			        $("#danpin")[0].style.display="none";
+			    }
+			$('#floorIdSelect')[0].value = ${obj.groupId};
+			
+			$('#sylbaddsp').on('click',function() {
+								$("#splist-container").html("");
+								$("#splist-container").load(
+										"fetchsp?CategoryId="+ $("#selectAdd").val()
+											 + "&ProductName="+ $("#spname").val());
+			});
+		});
+		
+		function beforeSubmit(formName)   {
+            if(formName.n1.value=="") {
+                alert("n1选中的值:空值！");
+            } else{
+                alert("选中的值是"+formName.n1.value);
+            }
+        }
+	</script>
+</body>
+</html>

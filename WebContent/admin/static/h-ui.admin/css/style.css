@@ -1,0 +1,367 @@
+@charset "utf-8";
+/* 你自己的样式 */
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.wxc-type{
+    width: 400px;
+    margin: 0 auto;
+}
+.wxc-search{
+    margin-top: 20px;
+}
+.wxc-search .spsearch{
+    margin-left: 10px;
+    float: left;
+}
+.wxc-search .btn-search{
+    float: left;
+}
+.welcome-body{
+    width: 100%;
+    height: 100%;
+    /*background: url("../../../images/welcome.png") center 50px no-repeat;*/
+    background-size: contain;
+
+}
+.syimg{
+    padding-left: 20px;
+}
+.syimg h1{
+    font-size: 18px;
+}
+.syimg span{
+    font-size: 18px;
+    margin-top: 20px;
+    margin-left: 10px;
+    /*font-weight: 600;*/
+}
+
+
+/*弹出框*/
+.jd_win{
+    width: 300px;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    left: 40%;
+    z-index: 1001;
+    display: none;
+}
+.jd_win > .jd_win_box{
+    width: 80%;
+    margin: 0 auto;
+    /*height: 135px;*/
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 150px;
+}
+.jd_win > .jd_win_box > .title{
+    text-align: center;
+    font-size: 18px;
+    line-height: 75px;
+    height: 75px;
+    border-bottom: 1px solid #ccc;
+}
+
+.jd_win > .jd_win_box > .button{
+    width: 100%;
+    padding-top: 10px;
+    margin: 0 auto;
+    position: relative;
+}
+.jd_win > .jd_win_box > .button > a{
+    width: 60px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 4px;
+    text-align: center;
+    float: left;
+    background: skyblue;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    margin-left: -30px;
+    text-decoration: none;
+}
+
+.jd_win{
+    animation: bounceInDown 1s;
+}
+/*动画*/
+@keyframes bounceInDown {
+    0%{
+        transform: translateY(-3000px);
+        -webkit-transform: translateY(-3000px);
+        opacity: 0;
+    }
+    60%{
+        transform: translateY(30px);
+        -webkit-transform: translateY(30px);
+        opacity: 1;
+    }
+    75%{
+        transform: translateY(-15px);
+        -webkit-transform: translateY(-15px);
+    }
+    90%{
+        transform: translateY(7px);
+        -webkit-transform: translateY(7px);
+    }
+    100%{
+        opacity: 1;
+        transform: none;
+        -webkit-transform: none;
+    }
+}
+@-webkit-keyframes bounceInDown{
+    0%{
+        transform: translateY(-3000px);
+        -webkit-transform: translateY(-3000px);
+        opacity: 0;
+    }
+    60%{
+        transform: translateY(30px);
+        -webkit-transform: translateY(30px);
+        opacity: 1;
+    }
+    75%{
+        transform: translateY(-15px);
+        -webkit-transform: translateY(-15px);
+    }
+    90%{
+        transform: translateY(7px);
+        -webkit-transform: translateY(7px);
+    }
+    100%{
+        opacity: 1;
+        transform: none;
+        -webkit-transform: none;
+    }
+}
+.dataTables_wrapper .dataTables_filter .input-text{
+    border-radius: 6px;
+    margin-left: 6px;
+}
+table.dataTable thead .sorting_desc{
+    background: url("");
+}
+table.dataTable thead .sorting_asc{
+    background: url("");
+}
+.flselect{
+    width: 200px;
+    height: 32px;
+}
+/*首页轮播*/
+/*编辑框*/
+.sylbedittk{
+    width: 500px;
+    background:#fff;
+    position: absolute;
+    top:30px;
+    left:50%;
+    margin-left: -250px;
+    border: 1px solid #ccc;
+    z-index: 100;
+    /*display: none;*/
+    margin-bottom: 20px;
+}
+
+.sylbeditdel{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    float: right;
+    font-style:normal;
+    text-align: center;
+    font-size: 30px;
+}
+.sylbeditdel:hover{
+    background: #ccc;
+}
+.breadcrumb{
+    padding: 0 15px;
+}
+/*删除框*/
+.sylbdel{
+    display: none;
+}
+.sylbdel .jd_win_box{
+    background: skyblue;
+}
+.sylbdel > .jd_win_box > .title{
+    border-bottom: 1px solid #fff;
+}
+.sylbdel > .jd_win_box > .button > a{
+    font-size: 20px;
+    background: #fff;
+    color: black;
+    position: relative;
+    margin: 0;
+}
+.sylbdel > .jd_win_box > .button > a:first-child{
+    margin-left: -80px;
+}
+.sylbdel > .jd_win_box > .button > a:last-child{
+    margin-left: 17px;
+}
+
+/*失败框*/
+.sylbsb1 .jd_win_box{
+    height: 120px;
+    background: #f9f7f6;
+}
+.sylbsb1 > .jd_win_box > .button{
+    padding-top: 0px;
+}
+.sylbsb .jd_win_box{
+    height: 155px;
+    background: #f9f7f6;
+}
+.mshsbk .jd_win_box{
+    height: 135px;
+    background: #f9f7f6;
+}
+
+/*新增轮播商品*/
+.sylbNewadd{
+    width: 500px;
+    height: 400px;
+    background:#fff;
+    position: absolute;
+    top:20px;
+    left:50%;
+    margin-left: -250px;
+    border: 1px solid #ccc;
+    z-index: 100;
+    margin-bottom: 20px;
+}
+/*后台秒杀弹出框*/
+.mshtedittk{
+    width: 500px;
+    background:#fff;
+    position: fixed;
+    top:30px;
+    left:50%;
+    margin-left: -250px;
+    border: 1px solid #ccc;
+    z-index: 100;
+}
+
+/*秒杀后台*/
+.mshtdel{
+    display: none;
+}
+/*新增*/
+.htmsnewadd{
+    border: 1px solid #CCCCCC;
+    width: 855px;
+    height: 520px;
+    background: #fff;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    margin-left: -400px;
+    z-index: 100;
+    display: none;
+    overflow: auto;
+}
+.htmsnewadd .page-container{
+    width: 800px;
+    position: relative;
+}
+
+/*修改上传图片样式*/
+#newadd{
+    position: absolute;
+    bottom: 20px;
+    left: 45%;
+}
+#sylbeditqr{
+    position: absolute;
+    bottom: 20px;
+    left: 45%;
+}
+
+.fileinput-remove-button{
+    display: none;
+}
+.fileinput-remove{
+    display: none;
+}
+.file-footer-buttons button:first-child{
+    display: none;
+}
+.file-upload-indicator{
+    display: none;
+}
+.file-preview{
+    width: 350px;
+    height: 200px;
+    overflow: auto;
+}
+/*.input-group{*/
+    /*width: 350px;*/
+    /*height: 200px;*/
+/*}*/
+.file-drop-zone-title{
+    padding: 0;
+    font-size: 20px;
+}
+.input-group{
+    height: 25px;
+}
+
+.file-drop-zone{
+    border: 0;
+}
+.fileinput-upload-button{
+    display: none;
+}
+.fileinput-remove-button{
+    display: none;
+}
+.input-group-btn button{
+    display: none;
+}
+.input-group-btn .fileinput-upload-button{
+    display: none;
+}
+.layui-layer-setwin{
+    display: none;
+}
+
+.spxxtk{
+    width: 500px;
+    height: 450px;
+    background: #fff;
+    border: 1px solid #CCCCCC;
+    margin: 0 auto;
+    position: fixed;
+    top:50px;
+    left: 50%;
+    margin-left: -250px;
+    z-index: 10000;
+}
+.spxxtk h1{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.spxxtk tr{
+    margin: 20px 10px;
+    height: 30px;
+}
+.spxxtk td{
+    font-size: 18px;
+    padding: 5px 0;
+}
+.spxxtk tr td:first-child{
+    width: 123px;
+}
+

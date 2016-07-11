@@ -1,0 +1,12 @@
+<input type="hidden" id="te" value="${@obj.id>0?"成功":"失败"}" />
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script>
+console.log($('#te').val());
+if($('#te').val()=="成功"){
+    alert("修改成功");
+    window.location.href="sylb.html";
+}else{
+	alert("修改失败");
+	window.location.href="sylb.html";
+}
+</script>

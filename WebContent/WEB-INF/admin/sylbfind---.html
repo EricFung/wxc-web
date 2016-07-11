@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--[ if lt  IE  9 ]>
+    <script type="text/javascript" src="lib/html5.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <script type="text/javascript" src="lib/PIE_IE678.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <![ end if ]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.7/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/icheck/icheck.css"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css"/>
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+</head>
+<body>
+<div class="htmsnewadd" id="htmsnewadd">
+    <nav class="breadcrumb" style="padding:0 20px;margin: 0;font-size: 14px;"> 首页轮播 
+    	<span class="c-gray en">&gt;</span>新增轮播图片
+    	<span class="c-gray en">&gt;</span>搜索商品
+    	<i class="sylbeditdel" id="sylbedit2">×</i>
+    </nav>
+    <div class="page-container">
+        <!--<form action="" method="post">-->
+        <div class="text-c">
+            <div class="wxc-search">
+                <div class="row wxc-type">
+                    <label class="form-label fl">类别：</label>
+                    <div class="formControls fl">
+                        <span class="select-box" style="width:150px;">
+                            <select class="select" name="adminRole" size="1" id="selectAdd">
+                                <option value="-1">---请选择---</option>
+                            </select>
+                     </span>
+                    </div>
+                </div>
+                
+                <input type="text" class="input-text spsearch" style="width:200px;" 
+                	   placeholder="输入查询商品信息" id="spname" name="spname">
+                <input type="button" class="btn btn-success btn-search" style="margin-left: 5px;" 
+                	   name="" value="搜商品" id="sylbaddsp" />
+            </div>
+        </div>
+        <!--</form>-->
+        <br/>
+
+        <div class="cl pd-5 bg-1 bk-gray mt-20">
+            <div class="mt-20">
+                <table class="table table-border table-bordered table-bg table-hover table-sort">
+                    <thead>
+                    <tr class="text-c">
+                        <th width="80">商品名称</th>
+                        <th width="80">商品编码</th>
+                        <th width="80">描述</th>
+                        <th width="80">添加日期</th>
+                        <th width="120">市场价</th>
+                        <th width="75">最低价</th>
+                        <th width="120">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="splist-container">
+                    33333333333333
+                    </tbody >
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--失败弹出框  mshtsbk    btnsbt -->
+<div class="jd_win mshsbk" id="mshsbk">
+    <div class="jd_win_box">
+        <p class="title">对不起，失败了。</p>
+
+        <div class="button clearfix">
+            <a href="javascript:;" class="submit" id="btnsbt">确定</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+<script src="js/sylb.js"></script>
+<script type="text/javascript" charset="UTF-8">
+	$(function(){
+		$('$sylbaddsp').on('click',function(){
+			$("#splist-container").html("");
+			$("#splist-container").load("fetchsp?CategoryId="+$("#selectAdd").val()+"&ProductName="+$("#spname").val());
+		});
+	})
+</script>
+</body>
+</html>

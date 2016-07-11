@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="lib/html5.js"></script>
+    <script type="text/javascript" src="lib/respond.min.js"></script>
+    <script type="text/javascript" src="lib/PIE_IE678.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.7/iconfont.css"/>
+    <link rel="stylesheet" type="text/css" href="lib/icheck/icheck.css"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin"/>
+    <link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css"/>
+    <!--[if IE 6]>
+    <script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script>DD_belatedPNG.fix('*');</script>
+    <![endif]-->
+</head>
+<body>
+<!--秒杀后台的修改弹框-->
+<div class="mshtedittk" id="mshtedittk">
+    <!--修改——添加nav代码-->
+    <nav class="breadcrumb" style="padding:0 20px;margin: 0;font-size: 14px;"> 秒杀后台 <span class="c-gray en">&gt;</span> 精品秒杀 </nav>
+    <article class="page-container">
+    
+        <form action="mshtsave" method="post"  enctype="multipart/form-data">
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>图片</label>
+
+            <div class="formControls col-xs-7 col-sm-8">
+           
+               <input  type="file"  class="input-text" value="${obj.imgUrl}"  placeholder="" id="imgUrl" name="imgUrl" >
+ 				      
+            </div>
+            <input type="hidden" name="id" value="${obj.id}"> 
+      			<input type="hidden" name="goodsId" value="${obj.goodsId}">
+      			<input type="hidden" name="groupId" value="${obj.groupId}">
+      			<input type="hidden" name="goodsName" value="${obj.goodsName}">
+      			<input type="hidden" name="discount" value="${obj.discount}">
+       			<input type="hidden" name="adType" value="${obj.adType}">     
+            
+        </div>
+        <div style="margin-top: 10px"></div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品信息：</label>
+
+            <div class="formControls col-xs-7 col-sm-8">
+                <input type="textarea" class="input-text" value="${obj.describe}" placeholder="商品信息"
+                       id="describe"
+                       name="describe">
+            </div>
+        </div>
+        <div style="margin-top: 10px"></div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>特价：</label>
+
+            <div class="formControls col-xs-3 col-sm-4">
+                <input type="text" class="input-text" value="${obj.memberPrice}" placeholder="" name="memberPrice" id="memberPrice">
+            </div>
+        </div>
+        <div style="margin-top: 10px"></div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>原价：</label>
+
+            <div class="formControls col-xs-3 col-sm-4">
+                <input type="text" class="input-text" value="${obj.MarketPrice}" placeholder="mshtyj" name="MarketPrice"
+                       id="MarketPrice">
+            </div>
+        </div>
+        <div style="margin-top: 10px"></div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>时间：
+            </label>
+            <!--AddedDate-->
+            <!--年：AddedDate.getFullYear()-->
+            <!--月：AddedDate.getMonth()+1-->
+            <!--日：AddedDate.getDate()-->
+            <!--时：AddedDate.getHours()-->
+            <!--分：AddedDate.getMinutes()-->
+            <!--秒：AddedDate.getSeconds()-->
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" name="logmin"	onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
+						id="logmin" class="input-text Wdate" value="${obj.time_stmp}" style="width: 297px;">
+                <!-- <input type="date" value="${obj.time_stmp}" id="time_stmp" name="time_stmp"> -->
+            </div>
+        </div>
+        <div style="margin-top: 10px"></div>
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                 <input class="btn btn-primary radius" type="submit" id="mshttj1" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+            </div>
+        </div>
+      
+        </form>
+    </article>
+</div>
+<!--失败弹出框  mshtsbk    btnsbt -->
+<div class="jd_win mshsbk" id="mshsbk">
+    <div class="jd_win_box">
+        <p class="title">对不起，失败了。</p>
+
+        <div class="button clearfix">
+            <a href="javascript:;" class="submit" id="btnsbt">确定</a>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+<script src="js/msht.js"></script>
+</body>
+</html>

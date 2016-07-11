@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<LINK rel="Bookmark" href="/favicon.ico">
+<LINK rel="Shortcut Icon" href="/favicon.ico" />
+
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui/css/H-ui.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/css/H-ui.admin.css" />
+<link rel="stylesheet" type="text/css"
+	href="lib/Hui-iconfont/1.0.7/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="lib/icheck/icheck.css" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+<link rel="stylesheet" type="text/css"
+	href="static/h-ui.admin/css/style.css" />
+<title>管理员列表12</title>
+</head>
+<body>
+	<nav class="breadcrumb">
+		</span>首页轮播 <span class="c-gray en">&gt;</span>首页轮播修改<i class="sylbeditdel" id="sylbedit">×</i>
+	</nav>
+	<form action="sylbsave.html" enctype="multipart/form-data"
+		method="post">
+		<div class="page-container" style="margin: 0 auto; width: 400px;">
+			<p>
+				<input type="hidden" name="id" value="${obj.id!}"> <input
+					type="hidden" name="imgUrl" value="${obj.imgUrl!}">
+			</p>
+			<p>
+				<input type="hidden" name="adType" value='${obj.adType!"0"}'>
+			</p>
+			<p>类别：
+				<select name="adp">
+					<option value="0" ${obj.groupId!=0? "selected='selected'"} >分类</option>
+					<option value="1" ${obj.goodsId!=0? "selected='selected'"} >单品</option>
+					<option value="2" ${obj.linkUrl!=null? "selected='selected'"} >活动</option>
+				</select>
+			</p>
+			<p>
+				参数：<input 
+				<% var a=obj.goodsId; var b=obj.groupId; var c=obj.linkUrl;%>
+				<%if(a==0&&b==0){%>
+				value="${obj.linkUrl!}"
+				<%}else if(a==0 && c==""){%>
+				value="${obj.groupId!}"
+				<%}else{%>
+				value="${obj.goodsId!}"
+				<%}%> 
+					name="adpv" type="text" class="input-text" style="width: 200px">
+			</p>
+			
+			<p>
+				排序：<input type="text" name="sequence" class="input-text"
+					value="${obj.sequence!}" style="width: 200px">
+			</p>
+			<p>
+				描述：<input type="text" name="describe" class="input-text"
+					value="${obj.describe!}" style="width: 200px">
+			</p>
+			<p>
+				连接：<input type="text" name="linkUrl" value="${obj.linkUrl!}"
+					class="input-text" style="width: 200px">
+			</p>
+			<p>
+				<input type="file" name="imgFile">
+			</p>
+			
+			
+			<div style="margin-top: 100px"></div>
+			<button class="btn btn-primary radius">确认</button>
+		</div>
+	</form>
+	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>
+	<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+	<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="static/h-ui/js/H-ui.js"></script>
+	<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+	<script src="js/sylb.js"></script>
+</body>
+</html>
