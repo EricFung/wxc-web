@@ -24,17 +24,13 @@
 <!--秒杀后台的修改弹框-->
 <div class="mshtedittk" id="mshtedittk">
     <!--修改——添加nav代码-->
-    <nav class="breadcrumb" style="padding:0 20px;margin: 0;font-size: 14px;"> 秒杀后台 <span class="c-gray en">&gt;</span> 精品秒杀 </nav>
+    <nav class="breadcrumb" style="padding:0 20px; margin: 0; font-size: 14px;"> 秒杀后台 <span class="c-gray en">&gt;</span> 精品秒杀 </nav>
     <article class="page-container">
-    
         <form action="mshtsave" method="post"  enctype="multipart/form-data">
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>图片</label>
-
             <div class="formControls col-xs-7 col-sm-8">
-           
                <input  type="file"  class="input-text" value="${obj.imgUrl}"  placeholder="" id="imgUrl" name="imgUrl" >
- 				      
             </div>
             <input type="hidden" name="id" value="${obj.id}"> 
       			<input type="hidden" name="goodsId" value="${obj.goodsId}">
@@ -42,16 +38,13 @@
       			<input type="hidden" name="goodsName" value="${obj.goodsName}">
       			<input type="hidden" name="discount" value="${obj.discount}">
        			<input type="hidden" name="adType" value="${obj.adType}">     
-            
         </div>
         <div style="margin-top: 10px"></div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>商品信息：</label>
 
             <div class="formControls col-xs-7 col-sm-8">
-                <input type="textarea" class="input-text" value="${obj.describe}" placeholder="商品信息"
-                       id="describe"
-                       name="describe">
+                <input type="textarea" class="input-text" value="${obj.describe}" placeholder="商品信息"  id="describe"   name="describe">
             </div>
         </div>
         <div style="margin-top: 10px"></div>
@@ -65,27 +58,29 @@
         <div style="margin-top: 10px"></div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>原价：</label>
-
             <div class="formControls col-xs-3 col-sm-4">
-                <input type="text" class="input-text" value="${obj.MarketPrice}" placeholder="mshtyj" name="MarketPrice"
-                       id="MarketPrice">
+                <input type="text" class="input-text" value="${obj.MarketPrice}" placeholder="mshtyj" name="MarketPrice"  id="MarketPrice">
             </div>
         </div>
         <div style="margin-top: 10px"></div>
         <div class="row cl">
             <label class="form-label col-xs-4 col-sm-3">
-                <span class="c-red">*</span>时间：
+                <span class="c-red">*</span>开始时间：
             </label>
-            <!--AddedDate-->
-            <!--年：AddedDate.getFullYear()-->
-            <!--月：AddedDate.getMonth()+1-->
-            <!--日：AddedDate.getDate()-->
-            <!--时：AddedDate.getHours()-->
-            <!--分：AddedDate.getMinutes()-->
-            <!--秒：AddedDate.getSeconds()-->
             <div class="formControls col-xs-8 col-sm-9">
                 <input type="text" name="logmin"	onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
 						id="logmin" class="input-text Wdate" value="${obj.time_stmp}" style="width: 297px;">
+                <!-- <input type="date" value="${obj.time_stmp}" id="time_stmp" name="time_stmp"> -->
+            </div>
+        </div>
+        <div style="margin-top: 10px"></div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">*</span>结束时间：
+            </label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" name="logmin1"	onfocus="WdatePicker({dateFmt: 'yyyy-MM-dd HH:mm:ss'})"
+						id="logmin1" class="input-text Wdate" value="${obj.time_stmp}" style="width: 297px;">
                 <!-- <input type="date" value="${obj.time_stmp}" id="time_stmp" name="time_stmp"> -->
             </div>
         </div>
@@ -95,7 +90,6 @@
                  <input class="btn btn-primary radius" type="submit" id="mshttj1" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
             </div>
         </div>
-      
         </form>
     </article>
 </div>
@@ -103,7 +97,6 @@
 <div class="jd_win mshsbk" id="mshsbk">
     <div class="jd_win_box">
         <p class="title">对不起，失败了。</p>
-
         <div class="button clearfix">
             <a href="javascript:;" class="submit" id="btnsbt">确定</a>
         </div>

@@ -32,6 +32,8 @@ public class SeckillModule extends BaseModule {
 		return dao.query(WxcAdModel.class,
 				Cnd.where("adType", "=", 1).and("isShow", "=", true).orderBy("sequence", "ASC"));
 	}
+	
+	
 
 	/**
 	 * 模糊搜索商品
@@ -48,7 +50,7 @@ public class SeckillModule extends BaseModule {
         name  = new String(name.getBytes("ISO-8859-1"),"UTF-8");
         System.out.println("经过解码后参数：" + name);
 
-		return dao.query(Shop_Products.class, Cnd.where("CategoryId", "=", CategoryId).and("ProductName", "like","%"+name+"%"));
+		return dao.query(Shop_Products.class, Cnd.where("CategoryId", "=", CategoryId).or("ProductName", "like","%"+name+"%"));
 		
 	}
 
@@ -71,17 +73,17 @@ public class SeckillModule extends BaseModule {
 	@Ok("beetl:admin/xiugai2.html")
 	//@Ok("json")
 	@AdaptBy(type = UploadAdaptor.class)
-	public Object tejiapush(@Param("..") Shop_Products sp, @Param("logmin") String timesp) {
+	public Object tejiapush(@Param("..") Shop_Products sp, @Param("logmin") String timespsta, @Param("logend") String timespend) {
 		NutMap re = new NutMap();
-		System.out.print(timesp);
+		System.out.print("开始时间："+timespsta+";结束时间："+timespend);
 		Shop_Products sps = dao.fetch(Shop_Products.class, sp.ProductId);
 		WxcAdModel ad = new WxcAdModel();
 		ad.setAdType(1);
 		ad.setDescribe(sp.Description);
 		ad.setGoodsName(sps.ProductName);
 		ad.setGoodsId(sps.ProductId);
-		ad.setTime_stmp(Timestamp.valueOf(timesp));
-		// System.out.println("图片地址"+sps.ImageUrl);
+		ad.setTime_sta(Timestamp.valueOf(timespsta));
+		ad.setTime_end(Timestamp.valueOf(timespend));;
 		ad.setImgUrl(sps.ImageUrl);
 		ad.setGroupId(sps.TypeId);
 		ad.setMarketPrice(sp.MarketPrice);
@@ -129,7 +131,7 @@ public class SeckillModule extends BaseModule {
 				WxcAdModel wa = (WxcAdModel) mshtEdit(ad.id);			
 				ad.setImgUrl(wa.imgUrl);
 			}
-			dao.update(ad);
+			dao.updateIgnoreNull(ad);
 
 		} else {		
 			dao.insert(ad);
@@ -137,57 +139,22 @@ public class SeckillModule extends BaseModule {
 		return ad;
 	}
 
-	/**
-	 * 增加商品
-	 *//*
-		 * @At
-		 * 
-		 * @Ok("beetl:admin/xiugai.html")
-		 * 
-		 * @AdaptBy(type = UploadAdaptor.class, args = {
-		 * "${app.root}/upfile/image" }) public Object
-		 * mshtsave(@Param("..")WxcAdModel ad, @Param("imgUrl") File f) {
-		 * 
-		 * if (f != null) { System.out.println(f);
-		 * System.out.println(f.getName()); String path = f.getPath(); String
-		 * name = f.getName(); int index = path.lastIndexOf("image"); path =
-		 * path.substring(0, index); File newFile = new File(path + "image//" +
-		 * name); boolean flag=f.renameTo(newFile); ad.setImgUrl("image/" +
-		 * name); } else { WxcAdModel wa = new WxcAdModel();
-		 * System.out.println(wa.imgUrl); ad.setImgUrl(wa.imgUrl); } if (ad.id >
-		 * 0) { System.out.println("xiugai");
-		 * 
-		 * dao.update(ad);
-		 * 
-		 * } else { System.out.println("增加"); dao.insert(ad); } return ad; }
-		 */
+
 	/**
 	 * 添加
 	 */
 	@At
-	@Ok("beetl:admin/mshtadd.html")
-	public Object mshtadd() {
-
+	@Ok("beetl:admin/Commonadd.html")
+	public Object Commonadd() {
 		return null;
 	}
-
-	/**
-	 * 查所有商品
-	 *//*
-		 * @At
-		 * 
-		 * @Ok("beetl:admin/mshtadd.html") public Object allProfuct() { return
-		 * dao.query(Shop_Products.class,null); }
-		 */
 
 	/**
 	 * 查所有类型
 	 */
 	@At
-	// @Ok("beetl:admin/mshtadd.html")
 	@Ok("json")
 	public Object allCategories() {
-
 		return dao.query(Shop_Categories.class, null);
 	}
 
@@ -207,13 +174,14 @@ public class SeckillModule extends BaseModule {
 		return rs.setv("ok", true);
 	}
 
+
 	/**
-	 * 单品信息
+	 * 根据产品id查出本条产品
 	 */
 	@At
 	@Ok("beetl:admin/mshtedit2.html")
-	public Object msadd(long pid) {
-		return dao.fetch(Shop_Products.class, pid);
+	public Object msadd(long pid){
+		return dao.fetch(Shop_Products.class,pid);
 	}
 
 }

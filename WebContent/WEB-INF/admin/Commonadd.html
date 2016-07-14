@@ -26,8 +26,8 @@
     <![endif]-->
 </head>
 <body>
-	<!--秒杀后台的新增产品-->
-	<div class="htmsnewadd" id="htmsnewadd" style="left: 47%;">
+	<!---->
+	<div class="htmsnewadd2" id="htmsnewadd" style="left: 47%;">
 		<div class="page-container">
 			<!--  <form action="mhmsht" enctype="multipart/form-data" method="post"> -->
 			<div class="text-c">
@@ -45,9 +45,7 @@
 							<span class="select-box" style="width: 150px;"> 
 							<select name="shopId" class="selectd" id="floorIdSelect">
            						<option value="-2">---请选择---</option>
-           						   <% for(var mshtitem in obj!) {%>
-           						 	  <option value=${mshtitem.CategoryId!}>${mshtitem.Name!}</option>
-           						   <% }  %>
+
        						</select>
 							</span>
 						</div>
@@ -75,6 +73,7 @@
 						</thead>
 
 						<tbody id="table-container">
+							<!--  ##############  Container  include  -->
 						</tbody>
 					</table>
 				</div>
@@ -115,13 +114,9 @@
 					'click',
 					function() {
 						$("#table-container").html("");
-						$("#table-container")
-					.load("mhmsht?CategoryId="+ $("#floorIdSelect").val()+ "&ProductName="+ $("#spxxAdd").val());
-					
+						$("#table-container").load("mhmsht?CategoryId="+ $("#floorIdSelect").val()+ "&ProductName="+ $("#spxxAdd").val());
 					});
-
 		})
-
 	</script>
 </body>
 </html>

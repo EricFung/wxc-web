@@ -11,6 +11,16 @@ $('.table-sort').dataTable({
     ]
 });
 
+/* 新增 */
+function article_add(title, url, id, w, h) {
+	var index = layer.open({
+		type : 2,
+		title : title,
+		area : [ '550px', '450px' ],
+		content : url +"?id="+id
+	});
+	layer.full(index);
+}
 
 $(function(){
 	//ajax得到下拉数据

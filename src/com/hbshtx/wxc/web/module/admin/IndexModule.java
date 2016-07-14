@@ -1,6 +1,7 @@
 package com.hbshtx.wxc.web.module.admin;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
 
 import org.nutz.dao.Cnd;
 import org.nutz.lang.util.NutMap;
@@ -49,11 +50,11 @@ public class IndexModule extends BaseModule {
 	@At
 	@Ok("beetl:admin/fetch_p_list.html")
 	public Object fetchsp(@Param("CategoryId") int CategoryId,
-			@Param("ProductName") String ProductName) {
+			@Param("ProductName") String ProductName) throws UnsupportedEncodingException {
 		return dao.query(
 				Shop_Products.class,
-				Cnd.where("CategoryId", "=", CategoryId).and("ProductName",
-						"like", "%" + ProductName + "%"));
+				Cnd.where("CategoryId", "=", CategoryId).or("ProductName",
+						"like", "%" + new String(ProductName.getBytes("ISO-8859-1"),"UTF-8") + "%"));
 	}
 
 	@At
@@ -92,7 +93,7 @@ public class IndexModule extends BaseModule {
 
 	@At
 	@Ok("beetl:admin/sylbsave.html")
-	@AdaptBy(type = UploadAdaptor.class, args = { "${app.root}/upfile/image" })
+	@AdaptBy(type = UploadAdaptor.class, args = { "D:/WWW/drshop/Upload/Shop/Images/wxcadmin/image" })
 	public Object sylbadnew(@Param("..") WxcAdModel ad, @Param("adp") int adp,
 			@Param("adpv") String adpv, @Param("imgFile") File f) {
 		System.out.println("adp:" + adp);
@@ -119,6 +120,9 @@ public class IndexModule extends BaseModule {
 			case 1:
 				ad.goodsId = Long.valueOf(adpv);
 				System.out.println("goodsid=" + ad.goodsId);
+				Shop_Products sp = dao.fetch(Shop_Products.class, Cnd.where("ProductId","=",adpv));
+				ad.goodsName = sp.getProductName();
+				System.out.println(">>>goodsName"+ad.goodsName);
 				break;
 			case 2:
 				ad.linkUrl = adpv;
@@ -145,28 +149,26 @@ public class IndexModule extends BaseModule {
 			String name = f.getName();
 			int index = path.lastIndexOf("image");
 			path = path.substring(0, index);
-			File newFile = new File(path + "image//" + name);
+			File newFile = new File("D://WWW//drshop//Upload//Shop//Images//wxcadmin//"+name);
 			boolean flag = f.renameTo(newFile);
 			ad.setImgUrl("image/" + name);
 		}
 		if (adpv == null) {
 			adpv = "0";
-			System.out.println(adpv + "adpv");
 		} else {
-			System.out.println(adpv + "adpv");
 			switch (adp) {
 			case 0:
 				ad.groupId = Long.valueOf(adpv);
 				break;
 			case 1:
 				ad.goodsId = Long.valueOf(adpv);
-				System.out.println("goodid=" + ad.goodsId);
+				System.out.println(">>>goodsId"+ad.goodsId);
+				
 				break;
 			case 2:
 				ad.linkUrl = adpv;
 				break;
 			}
-			System.out.println("goodid=" + ad.goodsId);
 		}
 		if (ad.id > 0) {
 			dao.update(ad);

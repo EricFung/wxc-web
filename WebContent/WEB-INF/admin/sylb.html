@@ -76,23 +76,20 @@
 					<tbody>
 						<% for(var item in obj) {%>
 						<tr class="text-c">
-							<td style="line-height: 50px;">${item.sequence!}</td> <%var
-							imgurl="../upfile/"+item.imgUrl;%>
-							<td style="line-height: 50px;"><img src="${imgurl}" alt=""
+							<td style="line-height: 50px; ">${item.sequence!}</td> 
+							
+							<% var imgurl = item.imgUrl; %>
+							<td style="line-height: 50px;"><img src="${ imgurl }" alt=""
 								style="width: 50px; height: 50px;" /></td>
-							<td style="line-height: 50px;">${item.describe}</td>
-
-
+							<td style="line-height: 50px;">${ item.goodsName }</td>
 							<!-- 逻辑判断 -->
-
 							<% var a=item.goodsId; var b=item.groupId; var c=item.linkUrl;%>
 							<%if(a==0&&b==0){%>
 							<td style="line-height: 50px;">活动地址：${item.linkUrl}</td> <%}else
-							if(a==0 && c==""){%>
+							if(a==0 && isEmpty(c) ){%>
 							<td style="line-height: 50px;">分类ID：${item.groupId}</td>
 							<%}else{%>
 							<td style="line-height: 50px;">商品ID：${item.goodsId}</td> <%}%>
-
 							<!--参数？-->
 							<td style="line-height: 50px;">首页轮播</td>
 							<td style="line-height: 50px;" class="f-14 td-manage"><a
@@ -111,19 +108,16 @@
 			</div>
 		</div>
 	</div>
-
 	<!--首页轮播删除框-->
 	<div class="jd_win sylbdel" id="sylbdeltk">
 		<div class="jd_win_box">
 			<p class="title">操作成功</p>
-
 			<div class="button clearfix">
 				<a href="javascript:;" class="submit" id="btnqd">确定</a> <a
 					href="javascript:;" class="submit" id="btnqx">取消</a>
 			</div>
 		</div>
 	</div>
-
 	<!--失败弹出框  mshsbk    btnsbt -->
 	<div class="jd_win sylbsb" id="mshsbk">
 		<div class="jd_win_box">
@@ -133,7 +127,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="lib/layer/2.1/layer.js"></script>
 	<script type="text/javascript" src="lib/My97DatePicker/WdatePicker.js"></script>

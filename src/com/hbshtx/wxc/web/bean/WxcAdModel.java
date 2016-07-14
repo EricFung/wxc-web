@@ -1,5 +1,7 @@
 package com.hbshtx.wxc.web.bean;
 
+import java.sql.Timestamp;
+
 import org.nutz.dao.entity.annotation.Column;
 import org.nutz.dao.entity.annotation.Table;
 
@@ -63,7 +65,7 @@ public class WxcAdModel extends BaseModel {
 	/**
 	 * 广告描述
 	 */
-	@Column(value = "describe")
+	@Column
 	public String describe;
 
 	/**
@@ -78,6 +80,29 @@ public class WxcAdModel extends BaseModel {
 	 */
 	@Column
 	public int sequence = 10;
+	
+	
+	@Column
+	public Timestamp time_sta;
+	
+	@Column
+	public Timestamp time_end;
+
+	public Timestamp getTime_sta() {
+		return time_sta;
+	}
+
+	public void setTime_sta(Timestamp time_sta) {
+		this.time_sta = time_sta;
+	}
+
+	public Timestamp getTime_end() {
+		return time_end;
+	}
+
+	public void setTime_end(Timestamp time_end) {
+		this.time_end = time_end;
+	}
 
 	/**
 	 * 是否首页显示
